@@ -6,6 +6,19 @@ let posicaoY;
 let mosquito;
 let tempo = 15;
 
+let criaMosquitoTempo = 1500;
+let nivel = window.location.search;
+nivel = nivel.replace("?","");
+
+if(nivel === 'normal'){
+    criaMosquitoTempo = 1500;
+}else if(nivel === 'dificil'){
+    criaMosquitoTempo = 1000;
+}else if(nivel === 'saitama'){
+    criaMosquitoTempo = 750;
+}
+
+
 function ajustaTamanhoPalcoJogo() {
     altura = window.innerHeight;
     largura = window.innerWidth;
@@ -82,7 +95,7 @@ let cronometro = setInterval(function(){
     if(tempo < 0){
         clearInterval(cronometro);
         clearInterval(criaMosca);
-        alert('Vitória');
+        window.location.href="vitoria.html"
     }else{
         document.getElementById('cronometro').innerHTML = tempo;
     }
